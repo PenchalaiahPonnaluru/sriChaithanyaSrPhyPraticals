@@ -1,3 +1,4 @@
+<!-- Copyright © 2025 @penchalaiahPonnaluru -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,10 +29,11 @@
   <section>
     <h2 class="text-3xl font-bold mb-6 text-teal-700">Instructions</h2>
     <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center">
-      <button id="view-instructions" class="bg-amber-500 text-white px-4 py-2 rounded hover:bg-amber-600 transition">View</button>
-      <div id="instruction-points" class="hidden mt-4 space-y-4">
-        <p class="text-gray-700">Follow these steps to prepare your physics lab record book:</p>
-        <ol class="list-decimal list-inside space-y-2 text-gray-700">
+      <button id="viewButton" onclick="openInstructions()" class="bg-amber-500 text-white px-4 py-2 rounded hover:bg-amber-600 transition">View</button>
+      <div id="instructions" style="display: none;" class="mt-4 space-y-4 relative bg-teal-100 p-4 rounded-lg">
+        <button onclick="closeInstructions()" class="absolute top-2 right-2 text-teal-700 hover:text-teal-900 text-3xl">&times;</button>
+        <p class="text-teal-800">Follow these steps to prepare your physics lab record book:</p>
+        <ol class="list-decimal list-inside space-y-2 text-teal-800">
           <li><strong>Step 1: Prepare the record book</strong>
             <ul class="list-disc list-inside ml-4">
               <li>Cover: Create a cover page containing your name, class, roll number, school name, and the academic year.</li>
@@ -65,6 +67,14 @@
             </ul>
           </li>
         </ol>
+        <div class="flex justify-end gap-4 mt-4">
+          <button onclick="backToTop()" class="bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600 transition">⬆ Back to Top</button>
+          <button onclick="closeInstructions()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">Close</button>
+        </div>
+      </div>
+      <div class="flex gap-2 mt-4" id="extraButtons" style="display: none;">
+        <button id="closeButton" onclick="closeInstructions()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">Close</button>
+        <button id="backToTopButton" onclick="backToTop()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">Back to Top</button>
       </div>
     </div>
   </section>
@@ -152,8 +162,9 @@
     <div class="flex flex-wrap justify-center gap-10">
 
       <!-- Teacher 1 -->
+       
       <div class="flex flex-col items-center text-center w-40">
-        <img src="teacher1.jpg" alt="Mrs. B. Rao" class="w-28 h-28 rounded-full border-4 border-emerald-500 object-cover">
+        <!-- <img src="teacher1.jpg" alt="Mrs. B. Rao" class="w-28 h-28 rounded-full border-4 border-emerald-500 object-cover">-->
         <h3 class="mt-3 font-semibold text-gray-900">Mr Dhimanth M. Sc</h3>
         <p class="text-sm text-gray-600">Vice Principal</p>
         <p class="text-xs text-gray-500">Department of Physics</p>
@@ -165,7 +176,7 @@
 
       <!-- Teacher 2 -->
       <div class="flex flex-col items-center text-center w-40">
-        <img src="teacher2.jpg" alt="Mr. C. Patel" class="w-28 h-28 rounded-full border-4 border-emerald-500 object-cover">
+        <!-- <img src="teacher2.jpg" alt="Mr. C. Patel" class="w-28 h-28 rounded-full border-4 border-emerald-500 object-cover">-->
         <h3 class="mt-3 font-semibold text-gray-900">Ms Govindhamma M.Sc</h3>
         <p class="text-sm text-gray-600">Juniour Lecturer</p>
         <p class="text-xs text-gray-500">Department of Physics</p>
@@ -177,7 +188,8 @@
 
        <!-- Teacher 3 -->
       <div class="flex flex-col items-center text-center w-40">
-        <img src="teacher3.jpg" alt="Dr. A. Sharma" class="w-28 h-28 rounded-full border-4 border-emerald-500 object-cover">
+        <!--        <img src="teacher3.jpg" alt="Dr. A. Sharma" class="w-28 h-28 rounded-full border-4 border-emerald-500 object-cover">
+-->
         <h3 class="mt-3 font-semibold text-gray-900">Mr Penchalaiah M.Sc</h3>
         <p class="text-sm text-gray-600">Juniour Lecturer</p>
         <p class="text-xs text-gray-500">Department of Physics</p>
@@ -192,6 +204,12 @@
 
 </main>
 
+<footer class="bg-gray-800 text-white py-4 mt-10">
+  <div class="max-w-6xl mx-auto px-4 text-center">
+    <p class="text-sm">&copy; 2025 @penchalaiahPonnaluru. All rights reserved.</p>
+  </div>
+</footer>
+
 <script>
 document.querySelectorAll('.accordion-btn').forEach(btn=>{
   btn.addEventListener('click',()=>btn.nextElementSibling.classList.toggle('open'));
@@ -200,6 +218,24 @@ document.querySelectorAll('.accordion-btn').forEach(btn=>{
     const instructions = document.getElementById('instruction-points');
     instructions.classList.toggle('hidden');
   });
+
+    function openInstructions() {
+        document.getElementById('instructions').style.display = 'block';
+        document.getElementById('viewButton').style.display = 'none';
+        document.getElementById('closeButton').style.display = 'inline';
+        document.getElementById('backToTopButton').style.display = 'inline';
+    }
+
+    function closeInstructions() {
+        document.getElementById('instructions').style.display = 'none';
+        document.getElementById('viewButton').style.display = 'inline';
+        document.getElementById('closeButton').style.display = 'none';
+        document.getElementById('backToTopButton').style.display = 'none';
+    }
+
+    function backToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 </script>
 </body>
 </html>
